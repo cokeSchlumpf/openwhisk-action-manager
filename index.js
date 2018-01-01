@@ -131,7 +131,7 @@ const check_action$update_action$check_existing = (action = {}, package_name, ar
       console.log(_.omit(result, 'exec'))
 
       const existing_annotations = _.groupBy(_.get(result, 'annotations', []), 'key');
-      const existing_md5sum = _.get(existing_annotations, 'md5sum', 'n/a');
+      const existing_md5sum = _.get(existing_annotations, 'md5sum.value', 'n/a');
 
       console.log(`existing md5 checksum of ${package_name}/${action.name}: ${existing_md5sum}`)
 
