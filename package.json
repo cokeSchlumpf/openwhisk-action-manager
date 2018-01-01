@@ -1,0 +1,22 @@
+{
+  "name": "openwhisk-action-manager",
+  "version": "1.0.0",
+  "description": "A simple command line util to deploy multiple actions to openwhisk.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Wellner <info@michaelwellner.de>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "archiver": "^2.1.0",
+    "bluebird": "^3.5.1",
+    "commander": "^2.12.2",
+    "glob": "^7.1.2",
+    "lodash": "^4.17.4",
+    "md5": "^2.2.1",
+    "openwhisk": "^3.11.0",
+    "properties-reader": "0.0.16",
+    "winston": "^2.4.0"
+  }
+}
