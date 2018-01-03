@@ -1,8 +1,11 @@
 {
   "name": "openwhisk-action-manager",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "A simple command line util to deploy multiple actions to openwhisk.",
   "main": "index.js",
+  "bin": {
+    "openwhisk-action-manager": "./index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,9 +22,5 @@
     "openwhisk": "^3.11.0",
     "properties-reader": "0.0.16",
     "winston": "^2.4.0"
-  },
-  "openwhisk": {
-    "action_excludes": [ "_templates" ],
-    "action_md5sum_excludes": [ "node_modules/**", "*test.js", "test/**" ]
   }
 }

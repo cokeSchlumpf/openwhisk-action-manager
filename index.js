@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const _ = require('lodash');
 const app = require('commander');
 const fs = require('fs');
@@ -16,7 +18,7 @@ app
   .parse(process.argv);
 
 // Set defaults
-app.dir = app.dir || '.'
+app.dir = app.dir || process.cwd()
 
 // read configuration
 const config_file = path.resolve(app.dir, './openwhisk.actions.json');
@@ -27,6 +29,7 @@ const config_json = utils.read_json(config_file, _.get(package_json, 'openwhisk'
 
 app.action_excludes = _.get(config_json, 'action_excludes', ['_template']);
 app.action_md5sum_excludes = _.get(config_json, 'action_md5sum_excludes', ["node_modules/**", "*test.js","test/**"]);
+app.action_zip_excludes = _.get(config_json, 'action_zip_excludes', ["*test.js","test/**"]);
 
 /**
  * Checks the given directory and creates the according package and actions of it.
@@ -80,7 +83,7 @@ const create_actions = (package_name, directories = []) => {
           const action_zip_file = path.resolve(action_directory, `${action_info.name}.zip`)
 
           return Promise.resolve(action_info)
-            .then(action_info => tasks.create_zip_archive(action_directory, action_zip_file, []).then(() => action_info))
+            .then(action_info => tasks.create_zip_archive(action_directory, action_zip_file, app.action_zip_excludes).then(() => action_info))
             .then(action_info => tasks.openwhisk$upload_action(action_info, package_name, action_zip_file))
             .then(action_info => {
               fs.unlinkSync(action_zip_file);
