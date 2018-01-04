@@ -1,6 +1,6 @@
 {
   "name": "openwhisk-action-manager",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A simple command line util to deploy multiple actions to openwhisk.",
   "main": "index.js",
   "bin": {

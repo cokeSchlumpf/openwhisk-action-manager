@@ -27,7 +27,7 @@ const package_file = path.resolve('./package.json');
 const package_json = utils.read_json(package_file, {});
 const config_json = utils.read_json(config_file, _.get(package_json, 'openwhisk', {}));
 
-app.action_excludes = _.get(config_json, 'action_excludes', ['_template']);
+app.action_excludes = _.get(config_json, 'action_excludes', ['_template', 'node_modules']);
 app.action_md5sum_excludes = _.get(config_json, 'action_md5sum_excludes', ["node_modules/**", "*test.js","test/**"]);
 app.action_zip_excludes = _.get(config_json, 'action_zip_excludes', ["*test.js","test/**"]);
 
