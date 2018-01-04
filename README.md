@@ -112,7 +112,7 @@ Additional configuration can be placed in the root `package.json`. E.g.:
     "openwhisk-action-manager": "0.0.4"
   },
   "openwhisk": {
-    "action_excludes": ["_template"],
+    "action_excludes": ["_template", "node_modules"],
     "action_md5sum_excludes": ["node_modules/**", "*test.js","test/**"],
     "action_zip_excludes": ["*test.js","test/**"]
   }
